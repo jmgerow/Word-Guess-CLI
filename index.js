@@ -13,7 +13,7 @@ var wordInPlay;
 
 
 // start game
-function startGame(){
+function startGame() {
     //reset guesses left and win status
     guessesLeft = 11;
     won = false;
@@ -26,6 +26,71 @@ function startGame(){
 }
 
 startGame();
+
+function gameLogic() {
+
+    if ((guessesLeft > 0) && (won === false)) {
+
+        inquirer
+            .prompt([
+                {
+                    type: "input",
+                    message: "Select a letter",
+                    name: "letter"
+                }
+            ])
+            .then(function (inquirerResponse) {
+
+                var letterPresent = false;
+                for (var i = 0; i < wordInPlay.letterArray.length; i++) {
+
+                    if (wordInPlay.letterArray[i].letter == inquirerResponse.letter) {
+
+                        wordInPlay.letterArray[i].guessedLetter = true;
+
+                        letterPresent = true;
+                    }
+                }
+
+                wordInPlay.displayWord();
+
+                if (letterPresent) {
+                    console.log("Correct!");
+                } else {
+                    guessesLeft--;
+                    if (guessesLeft === 0) {
+                        console.log(computerGuess + " has eluded you!");
+                    } else {
+                        console.log("Incorrect! You have " + guessesLeft + " guesses remaining")
+                    }
+                }
+
+                if (wordInPlay.display.indexOf("_") == -1) {
+                    won = true;
+                    console.log("Good guess!")
+                }
+                gameLogic();
+            }
+
+            );
+
+    } else {
+        inquirer.prompt([
+            {
+                type: "confirm",
+                message: "Start over?",
+                name: "resetGame"
+            }
+        ]).then(function (playAgain) {
+            if (playAgain.resetGame) {
+                startGame();
+                gameLogic();
+            }
+        });
+    }
+}
+
+gameLogic();
 
 
 

@@ -1,6 +1,6 @@
 var Letter = function(char){
     this.letter = char;
-    console.log('this.letter', this.letter)
+    // console.log('this.letter', this.letter)
     this.guessedLetter = false;
 }
 

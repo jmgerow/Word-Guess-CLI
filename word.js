@@ -22,17 +22,16 @@ var Word = function (word) {
 
     }
 
-    Word.prototype.displayWord = function () {
-
-        this.display = ""
-
-        for (var i = 0; i < this.letterArray.length; i++) {
-            this.display += this.letterArray[i].reveal() + " "
-        };
-    }
-
-    console.log("\n" + this.display + "\n");
-
 }
+
+Word.prototype.displayWord = function () {
+
+    this.display = ""
+
+    for (var i = 0; i < this.letterArray.length; i++) {
+        this.display += this.letterArray[i].reveal() + " "
+    }
+    console.log("\n" + this.display + "\n");
+};
 
 module.exports = Word;
