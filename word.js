@@ -3,7 +3,7 @@ var Letter = require("./letter.js");
 var Word = function (word) {
     this.letterArray = [];
     this.word = word;
-    console.log('this.word', this.word)
+    // console.log('this.word', this.word)
     this.display = "";
     this.splitWord = function () {
         return this.word.split("");

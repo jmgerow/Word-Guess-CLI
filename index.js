@@ -17,9 +17,9 @@ function startGame() {
     //reset guesses left and win status
     guessesLeft = 11;
     won = false;
-    console.log("Welcome to LOTR Word-Guess: CLI Edition!")
+    console.log("Welcome to Middle Earth Word-Guess: CLI Edition!")
     computerGuess = wordChoices[Math.floor(Math.random() * wordChoices.length)]
-    console.log('computerGuess', computerGuess)
+    // console.log('computerGuess', computerGuess)
 
     wordInPlay = new Word(computerGuess);
     wordInPlay.addLetters();
